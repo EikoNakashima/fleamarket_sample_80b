@@ -26,13 +26,15 @@
         height: 51px;
         width: 170px;
         margin-top: 1px;
-
       }
       &__Gbtn {
         height: 76px;
         width: 190px;
         margin-top: -11px;
         margin-left: -10px;
+      }
+      &__Abtn:hover, &__Gbtn:hover {
+        opacity: 0.5;
       }
     }
   }

@@ -81,6 +81,9 @@ body {
           padding: 0 0 0 16px;
           color: black;
         }
+        &__category:hover, &__brand:hover {
+          color: #ffb340;
+        }
       }
       .Under-right {
         margin-left: auto;

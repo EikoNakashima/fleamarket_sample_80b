@@ -52,6 +52,9 @@ p {
     &__app {
       margin-top: 14px;
     }
+    &__app:hover, &__google:hover {
+      opacity: 0.5;
+    }
 
   }
 }
@@ -157,6 +160,9 @@ p {
       display: flex;
       &__abtn {
         margin: 21px -10px 0 -10px;
+      }
+      &__abtn:hover, &__gbtn:hover {
+        opacity: 0.5;
       }  
       &__gbtn {
         margin-right: -20px;
@@ -253,9 +259,11 @@ p {
       .List {
         width: 220px;
         display: inline-block;
-
         &__link {
           position: relative;
+        }
+        &__link:hover {
+          opacity: 0.5;
         }
         &__img {
           background-color: #fff;
