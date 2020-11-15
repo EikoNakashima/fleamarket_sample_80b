@@ -1,7 +1,7 @@
 %head
 .Purchases
   .Purchases__header
-    = image_tag 'logo.png', class: 'FurimaLogo'
+    = image_tag '/images/logo.png', class: 'FurimaLogo'
 %body
   .Contents
     .Goods
@@ -12,7 +12,7 @@
         %p 最大10枚までアップロードできる
         .Goods__image__body
           %label{"class": "btn"}
-            = image_tag "icon_camera.png", class:"camera"
+            = image_tag "/images/licon_camera.png", class:"camera"
             %input{"type": "file"}
       .Goods__name
         %label 商品名
@@ -81,4 +81,4 @@
         %li.Purchases__footer__content__list__type プライバシーポリシー
         %li.Purchases__footer__content__list__type FURIMA利用規約
         %li.Purchases__footer__content__list__type 特定商取引に関する表記
-    = image_tag 'logo.png', class: 'FurimaLogo'
+    = image_tag '/images/logo.png', class: 'FurimaLogo'
