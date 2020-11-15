@@ -78,3 +78,5 @@ gem 'fog-aws'
 
 gem 'rmagick'
 gem 'mini_magick'
+
+gem 'ancestry'

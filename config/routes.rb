@@ -13,4 +13,11 @@ Rails.application.routes.draw do
     end
   end
   resources :users, only: :show
+  resources :categories, only: [:index] do
+    member do
+      get 'parent'
+      get 'child'
+      get 'grandchild'
+    end
+  end
 end
