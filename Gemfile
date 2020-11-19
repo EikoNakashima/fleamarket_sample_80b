@@ -80,3 +80,5 @@ gem 'rmagick'
 gem 'mini_magick'
 
 gem 'ancestry'
+
+gem 'sprockets'
