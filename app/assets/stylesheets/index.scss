@@ -257,6 +257,9 @@ p {
         .List {
           width: 220px;
           display: inline-block;
+          &__link {
+            position: relative;
+          }
           &__img {
             background-color: #fff;
             display: inline-block;
@@ -334,4 +337,24 @@ p {
 
 a {
   text-decoration: none;
+}
+
+.List__sold{
+  width: 0;
+  height: 0;
+  border-top: 50px solid #ea352d ;
+  border-right: 50px solid transparent;
+  border-bottom: 50px solid transparent;
+  border-left: 50px solid #ea352d ;
+  z-index:100;
+  position: absolute;
+  top: 0px;
+  left:-1px;
+  &__inner{
+    transform: rotate(-45deg);
+    font-size: 25px;
+    margin:-25px 0px 0px -45px;
+    color: #fff;
+    font-weight: 600;
+  }
 }
