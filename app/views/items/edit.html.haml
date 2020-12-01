@@ -1,1 +1,99 @@
-あああああ
+%head
+.Purchases
+  .Purchases__header
+    = image_tag '/images/logo.png', class: 'FurimaLogo'
+%body
+  .Contents
+    .Contents__title 出品内容
+  = form_for @item do |f|
+    .Goods
+      .Goods__image
+        %p1 出品画像
+        %p2 必須
+        .Goods__image--text 最大10枚までアップロードできる
+        %div#image-box
+          %div#previews
+            -if @item.persisted?
+              = @item.images.each_with_index do |image, i|
+                = image_tag image.photo.url, data: {index: i}, width: '100', height: '100'
+
+          = f.fields_for :images do |image|
+            %div.js-file_group{ data: { index: 'image.index'}}
+              = image.file_field :photo, class: 'js-file'
+              %span.js-remove 削除
+            -if @item.persisted?
+              = image.check_box :_destroy, data:{index: image.index}, class: 'hidden-destroy'
+          -if @item.persisted?
+            %div.js-file_group{ data: { index: '@item.image.count'}}
+              = file_field_tag :photo, name: "item[images_attributes][#{@item.images.count}][photo]", class: 'js-file'
+              %div.js-remove 削除
+        
+      .Goods__name
+        %p1 商品名
+        %p2 必須
+        .Goods__name__text
+          = f.text_field :name, placeholder: "40文字まで", maxlength: "40", size: '61x2'
+      .Goods__description
+        %p1 商品の説明
+        %p2 必須
+        .Goods__description__text
+          = f.text_area :text, placeholder: "商品の説明（色、素材、重さ、定価、注意点など1000文字以内)", maxlength: "1000", size: '60x5'
+    .Details
+      .Details__title 商品の詳細
+      .Details__category#category_box
+        %p1 カテゴリー
+        %p2 必須
+        .Details__category__parent#parent_box
+          = f.collection_select :category_id, @category_parent, :id, :name, {include_blank: "選択してください"}, { class: "Details__category__parent", id: "parent_category"}
+        .Details__category__children#children_box
+        
+        .Details__category__grandchildren#grandchildren_box
+
+      .Details__brand
+        %p1 ブランド
+        %p2 任意
+        .Details__brand__text
+          = f.text_field :brand, placeholder: "例）シャネル", maxlength: "40", size: '30x2'
+      .Details__condition
+        %p1 商品の状態
+        %p2 必須
+        .Details__cindition__text
+          = f.collection_select :condition_id, Condition.all, :id, :name, {prompt: "選択してください"}, {class: 'Details__condition__select'}
+    .Delivery
+      .Delivery__title 配送について
+      .Delivery__cost
+        %p1 配送料の負担
+        %p2 必須
+        .Delivery__cost__text
+          = f.collection_select :cost_id, Cost.all, :id, :name, {prompt: "選択してください"}, {class: 'Delivery__cost__select'}
+      .Delivery__area
+        %p1 配送元の地域
+        %p2 必須
+        .Delivery__area__text
+          = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "選択してください"}, {class: 'Delivery__area__select'}
+      .Delivery__date
+        %p1 配送までの日数
+        %p2 必須
+        .Delivery__date__text
+          = f.collection_select :days_id, Days.all, :id, :name, {prompt: "選択してください"}, {class: 'Delivery__date__select'}
+    .Price
+      .Price__title 価格
+      .Price__selling
+        %p1 販売価格 (半角英数のみ)
+        %p2 必須
+      .Price__yen
+        %p1 ￥
+        = f.text_field :price, placeholder: "100~9,999,999", maxlength: "9", class: 'Price__yen__input'
+    .Listing
+      = f.submit '出品する', class: "Listing__sell"
+      = link_to root_path(current_user), class: "Listing__tpo" do
+        トップページに戻る
+        
+%footer
+  .Purchases__footer
+    .Purchases__footer__content
+      %ul.Purchases__footer__content__list
+        %li.Purchases__footer__content__list__type プライバシーポリシー
+        %li.Purchases__footer__content__list__type FURIMA利用規約
+        %li.Purchases__footer__content__list__type 特定商取引に関する表記
+    = image_tag '/images/logo.png', class: 'FurimaLogo'
