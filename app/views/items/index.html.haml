@@ -94,7 +94,7 @@
         %ul.Main-category__boxs__lists
           %li.List
           - @items.first(5).each do |item| 
-            = link_to item_path(id: item.id), class: "List__link" do
+            = link_to item_path(item.id), class: "List__link" do
               = image_tag item.images.first.photo.url, class: "List__img"
               .List__body
                 %h3.List__body__name
@@ -119,7 +119,7 @@
         %ul.Main-category__boxs__lists
           %li.List
           - @items.first(5).each do |item| 
-            = link_to item_path(id: item.id), class: "List__link" do
+            = link_to item_path(item.id), class: "List__link" do
               = image_tag item.images.first.photo.url, class: "List__img"
               .List__body
                 %h3.List__body__name

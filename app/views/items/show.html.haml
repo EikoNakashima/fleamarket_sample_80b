@@ -7,16 +7,17 @@
       .Main__show__contentRight__topContent
         .Main__show__contentRight__topContent__itemBox
           .Main__show__contentRight__topContent__itemBox__name
-            中華そば
+            = @item.name
           .Main__show__contentRight__topContent__itemBox__body
             .itemBox3
-              =image_tag("/images/product-image-06.jpeg",width: '450',height: '400', alt: "画像") 
+              =image_tag @item.images.first.photo.url, class:"List__imag",width: '450', height: '400', alt: '画像'
+              -# =image_tag("/images/product-image-06.jpeg",width: '450',height: '400', alt: "画像") 
               %ul
               =image_tag("/images/product-image-06.jpeg",width: '100',height: '100', alt: "画像") 
               =image_tag("/images/product-image-06.jpeg",width: '100',height: '100', alt: "画像") 
       
           .Main__show__contentRight__topContent__itemBox__price
-            ¥1000円
+            = @item.price
           .Main__show__contentRight__topContent__itemBox__price-detail
             (税込)
             送料込み
@@ -130,3 +131,8 @@
                     (税込)
 
 = render "items/footer"
+
+.New-createBtn
+  %span.New-createBtn__text 編集する
+  = link_to edit_item_path, class:"path" do
+    = image_tag "/images/icon_camera.png",width: '54',alt: "画像",class: "New-createBtn__icon"
