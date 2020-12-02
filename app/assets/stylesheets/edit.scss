@@ -1,0 +1,321 @@
+body{
+  background-color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+  .Contents {
+    background-color: white;
+    width: 600px;
+    display: flex;
+    justify-content: center;
+    
+    &__title {
+      font-size: 30px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+  }
+
+  .edit_item {
+    background-color: white;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+  
+
+    .Goods {
+      width: 90%;
+      &__image {
+        padding: 5px 0 5px 10px;
+      }
+
+      &__image p1 {
+        font-size: 15px;
+        font-weight: bold;
+        margin-right: 5px;
+      }
+      &__image p2 {
+        background-color: #3ccace;
+        color: #fff;
+        font-size: 15px;
+        border-radius: 2px;
+        padding: 2px;
+      }
+        .js-file_group {
+          display: flex;
+          margin-bottom: 5px;
+        }
+        .js-remove {
+          font-size: 15px;
+          font-weight: bold;
+          background-color: khaki;
+          padding: 3px;
+          border-radius: 5px;
+          margin-left: 10px;
+        }
+      &__name {
+        padding: 5px 0 5px 10px;
+        &__text {
+          margin-top: 10px;
+          #item_name {
+            padding: 10px 10px;
+          }
+        }
+      }
+      &__name p1 {
+        font-size: 15px;
+        font-weight: bold;
+        margin-right: 5px;
+      }
+      &__name p2 {
+        background-color: #3ccace;
+        color: #fff;
+        font-size: 15px;
+        border-radius: 2px;
+        padding: 2px;
+      }
+      &__description {
+        padding: 5px 0 5px 10px;
+        &__text {
+          margin-top: 10px;
+          #item_text {
+            padding: 10px 10px;
+          }
+        }
+      }
+      &__description p1 {
+        font-size: 15px;
+        font-weight: bold;
+        margin-right: 5px;
+      }
+      &__description p2 {
+        background-color: #3ccace;
+        color: #fff;
+        font-size: 15px;
+        border-radius: 2px;
+        padding: 2px;
+      }
+    }
+    .Details {
+      width: 90%;
+      &__title {
+        font-size: 20px;
+        font-weight: bold;
+        border-top: gray solid 1px;
+        padding:  10px 0 5px 10px;
+        margin-top: 15px;
+      }
+      &__category {
+        padding: 5px 0 5px 10px;
+        &__parent {
+          #parent_category {
+            width: 49%;
+            padding: 5px;
+            margin-top: 10px;
+          }
+        }
+        &__children {
+          #children_category {
+            width: 49%;
+            padding: 5px;
+            margin-top: 10px;
+          }
+        }
+        &__grandchildren {
+          #grandchildren_category {
+            width: 49%;
+            padding: 5px;
+            margin-top: 10px;
+          }
+        }
+      }
+      &__category p1 {
+        font-size: 15px;
+        font-weight: bold;
+        margin-right: 5px;
+      }
+      &__category p2 {
+        background-color: #3ccace;
+        color: #fff;
+        font-size: 15px;
+        border-radius: 2px;
+        padding: 2px;
+      }
+      &__brand {
+        padding: 5px 0 5px 10px;
+        &__text {
+          #item_brand {
+            padding: 5px;
+            margin-top: 10px;
+          }
+        }
+      }
+      &__brand p1 {
+        font-size: 15px;
+        font-weight: bold;
+        margin-right: 5px;
+      }
+      &__brand p2 {
+        background-color: #3ccace;
+        color: #fff;
+        font-size: 15px;
+        border-radius: 2px;
+        padding: 2px;
+      }
+      &__condition {
+        padding: 5px 0 5px 10px;
+        &__select {
+          width: 49%;
+          padding: 5px;
+          margin-top: 10px;
+        }
+      }
+      &__condition p1 {
+        font-size: 15px;
+        font-weight: bold;
+        margin-right: 5px;
+      }
+      &__condition p2 {
+        background-color: #3ccace;
+        color: #fff;
+        font-size: 15px;
+        border-radius: 2px;
+        padding: 2px;
+      }
+    }
+    .Delivery {
+      width: 90%;
+      &__title {
+        font-size: 20px;
+        font-weight: bold;
+        border-top: gray solid 1px;
+        padding: 10px 0 5px 10px;
+        margin-top: 15px;
+      }
+      &__cost {
+        padding: 5px 0 5px 10px;
+        &__select {
+          width: 49%;
+          padding: 5px;
+          margin-top: 10px;
+        }
+      }
+      &__cost p1 {
+        font-size: 15px;
+        font-weight: bold;
+        margin-right: 5px;
+      }
+      &__cost p2 {
+        background-color: #3ccace;
+        color: #fff;
+        font-size: 15px;
+        border-radius: 2px;
+        padding: 2px;
+      }
+      &__area {
+        padding: 5px 0 5px 10px;
+        &__select {
+          width: 49%;
+          padding: 5px;
+          margin-top: 10px;
+        }
+      }
+      &__area p1 {
+        font-size: 15px;
+        font-weight: bold;
+        margin-right: 5px;
+      }
+      &__area p2 {
+        background-color: #3ccace;
+        color: #fff;
+        font-size: 15px;
+        border-radius: 2px;
+        padding: 2px;
+      }
+      &__date {
+        padding: 5px 0 5px 10px;
+        &__select {
+          width: 49%;
+          padding: 5px;
+          margin-top: 10px;
+        }
+      }
+      &__date p1 {
+        font-size: 15px;
+        font-weight: bold;
+        margin-right: 5px;
+      }
+      &__date p2 {
+        background-color: #3ccace;
+        color: #fff;
+        font-size: 15px;
+        border-radius: 2px;
+        padding: 2px;
+      }
+    }
+    .Price {
+      width: 90%;
+      &__title {
+        font-size: 20px;
+        font-weight: bold;
+        border-top: gray solid 1px;
+        padding: 10px 0 5px 10px;
+        margin-top: 15px;
+      }
+      &__selling {
+        padding: 5px 0 5px 10px;
+      }
+      &__selling p1 {
+        font-size: 15px;
+        font-weight: bold;
+        margin-right: 5px;
+      }
+      &__selling p2 {
+        background-color: #3ccace;
+        color: #fff;
+        font-size: 15px;
+        border-radius: 2px;
+        padding: 2px;
+      }
+      &__yen {
+        padding: 5px 0 5px 10px;
+        &__input {
+          width: 40%;
+          padding: 5px;
+        }
+      }
+      &__yen p1 {
+        font-size: 15px;
+        font-weight: bold;
+      }
+    }
+    .Listing {
+      width: 90%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-top: gray solid 1px;
+      margin-top: 15px;
+      &__sell {
+        width: 25%;
+        height: 50px;
+        font-size: 20px;
+        font-weight: bold;
+        color: white;
+        background-color: red;
+        border: none;
+        border-radius: 30px;
+        margin: 15px 0;
+      }
+      &__tpo {
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+    }
+  }

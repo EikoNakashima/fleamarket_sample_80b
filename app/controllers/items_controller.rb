@@ -29,6 +29,8 @@ class ItemsController < ApplicationController
   end
 
   def update
+    item = Item.find(params[:id])
+    item.update(item_params)
   end
 
   def destroy
