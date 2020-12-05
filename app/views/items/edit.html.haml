@@ -41,10 +41,24 @@
       .Details__category#category_box
         %p1 カテゴリー
         %p2 必須
-        .Details__category__parent#parent_box
-          = f.collection_select :category_id, @category_parent, :id, :name, {include_blank: "選択してください"}, { class: "Details__category__parent", id: "parent_category"}
-        .Details__category__children#children_box
-        .Details__category__grandchildren#grandchildren_box
+      - if @category_id == 12 or @category_id == 23 or @category_id == 40 or @category_id == 52 or @category_id == 65 or @category_id == 79 or @category_id == 90 or @category_id == 101 or @category_id == 111 or @category_id == 120 or @category_id == 129 or @category_id == 138 or @category_id == 148
+        .append__category
+          .category
+            =f.collection_select :category_id, @category_children_array, :id, :name, {selected:@child_array}, {class:"serect_field"}
+          .category__grandchild#children_wrapper
+            =f.collection_select :category_id, @category_grandchildren_array, :id, :name, {},{selected:@grandchild_array, id:"child__category",class:"serect_field"}
+      - else
+        .append__category
+          .category
+            =f.collection_select :category_id, @category_parent_array, :id, :name, {selected:@parent_array}, {class:"serect_field"}
+          .category__child#children_wrapper
+            =f.collection_select :category_id, @category_children_array, :id, :name,{selected:@child_array, id:"child__category", class:"serect_field"}
+          .category__grandchild#grandchildren_wrapper
+            =f.collection_select :category_id, @category_grandchildren_array, :id, :name, {selected:@grandchild_array}, {class:"serect_field"}
+        -# .Details__category__parent#parent_box
+        -#   = f.collection_select :category_id, @category_parent, :id, :name, {include_blank: "選択してください"}, { class: "Details__category__parent", id: "parent_category"}
+        -# .Details__category__children#children_box
+        -# .Details__category__grandchildren#grandchildren_box
       .Details__brand
         %p1 ブランド
         %p2 任意
