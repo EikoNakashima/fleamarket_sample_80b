@@ -1,4 +1,9 @@
-.Contents
-  .Success
-    %h3 更新が完了しました。
-    %a.btn{:href => "/"} 投稿一覧へ戻る
+= render "header"
+.done#fullsize
+  .done__title
+    商品情報を更新しました
+  .done__backlink
+    = link_to 'トップページへ戻る', root_path, class: 'link'
+  .done__backlink
+    = link_to '更新した商品を確認する', item_path(@item), class: 'link'
+= render "footer"

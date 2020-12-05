@@ -1,11 +1,11 @@
 %head
 .Purchases
   .Purchases__header
-    = image_tag '/images/logo.png', class: 'FurimaLogo'
+    =image_tag '/images/logo.png', class: 'FurimaLogo'
 %body
   .Contents
     .Contents__title 出品内容
-  = form_for @item do |f|
+  = form_for @item,method: :patch  do |f|
     .Goods
       .Goods__image
         %p1 出品画像
@@ -82,8 +82,7 @@
         = f.text_field :price, placeholder: "100~9,999,999", maxlength: "9", class: 'Price__yen__input'
     .Listing
       = f.submit '編集する', class: "Listing__sell"
-      = link_to root_path(current_user), class: "Listing__tpo" do
-        トップページに戻る
+      = link_to "トップページに戻る",root_path(current_user), class: "Listing__tpo" 
 %footer
   .Purchases__footer
     .Purchases__footer__content

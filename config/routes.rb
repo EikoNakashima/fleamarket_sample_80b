@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       get 'purchases'
       get 'category_children', defaults: { format: 'json' }
       get 'category_grandchildren', defaults: { format: 'json' }
+      get 'update_done'
     end
     member do
       get 'category_children', defaults: { format: 'json' }

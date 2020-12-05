@@ -1,5 +1,8 @@
 class ItemsController < ApplicationController
   before_action :get_category
+  # before_action :category_parent_array, only: [:new, :create, :edit]
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  # before_action :show_all_instance, only: [:show, :edit, :destroy]
 
   def index
     @items = Item.includes(:images).order('created_at DESC')
@@ -25,12 +28,18 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:id])
   end
 
   def update
-    item = Item.find(params[:id])
-    item.update(item_params)
+    if @item.update(item_params)
+      # redirect_to item_path
+    else
+      render :edit
+    end
+  end
+
+  def update_done
+    @item_update = Item.order("updated_at DESC").first
   end
 
   def destroy
@@ -63,5 +72,23 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:name, :text, :price, :brand, :prefecture_id, :category_id, :condition_id, :cost_id, :days_id, images_attributes: [:photo, :_destory, :id]).merge(seller_id: current_user.id)
   end
+
+  def set_item
+    @item = Item.find(params[:id])                               
+  end
+
+  # def category_parent_array
+  #   @category_parent_array = Category.where(ancestry: nil)      
+  # end
+
+  # def show_all_instance
+  #   # @user = User.find(@item.user_id)
+  #   @images = Image.where(item_id: params[:id])                  
+  #   @images_first = Image.where(item_id: params[:id]).first
+  #   @category_id = @item.category_id                             
+  #   @category_parent = Category.find(@category_id).parent.parent                    
+  #   @category_child = Category.find(@category_id).parent
+  #   @category_grandchild = Category.find(@category_id)
+  # end
 
 end
