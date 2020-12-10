@@ -8,34 +8,26 @@
         .Main__show__contentRight__topContent__itemBox
           .Main__show__contentRight__topContent__itemBox__name
             = @item.name
-          .Main__show__contentRight__topContent__itemBox__body
-            .itemBox3
-
-
-            - @item.images.each do |image|
-              = image_tag image.photo.url, size: '450x400'
+          .Main__show__contentRight__topContent__itemBox__images
+            .itemImage_main
+              - @item.images.first(1).each do |image|
+                = image_tag image.photo.url, width: '400', height: '350'
+            .itemImage_sub
+              - @item.images[1..-1].each do |image|
+                = image_tag image.photo.url, width: '100', height: '100'
               
-              %ul
-              - @item.images.each do |image|
-                = image_tag image.photo.url, size: '100x100'
-              - @item.images.each do |image|
-                = image_tag image.photo.url, size: '100x100'
-
-
-
-          .Main__show__contentRight__topContent__itemBox__price
-            = @item.price
-            円
-
-             
-          .Main__show__contentRight__topContent__itemBox__price
-            = @item.price
-
-          .Main__show__contentRight__topContent__itemBox__price-detail
+          .Main__show__contentRight__topContent__itemBox__priceMark
+            ￥
+            %div.price
+              = @item.price
+            
+          .Main__show__contentRight__topContent__itemBox__priceTax
             (税込)
             送料込み
-          .Main__show__contentRight__topContent__itemBox__itemDetail
-            商品詳細表
+             
+          .Main__show__contentRight__topContent__itemBox__text
+            = @item.text
+
           .Main__show__contentRight__topContent__itemBox__table
             .Main__show__contentRight__topContent__itemBox__table__tbody
               .table-contents
@@ -43,19 +35,28 @@
                   出品者
                 .table-right
                   = @user.nickname
+                  
               .table-contents
                 .table-left
                   カテゴリー
                 .table-right
-                  = link_to "#",class:"skyblue"do
-                    =@item.category.root.name
-                    = icon'fas', 'angle-left'
-                  = link_to "#",class:"skyblue"do
-                    =@item.category.parent.name
-                    = icon'fas', 'angle-left'
-                  = link_to "#",class:"skyblue"do
-                    =@item.category.name
-                    
+                  - @category_parent.each do |parent|
+                    -if @item.category_id == parent.id
+                      = parent.name
+                      
+                    - parent.children.each do |child|
+                      -if @item.category_id == child.id
+                        = parent. name
+                        　>>　
+                        = child.name
+                        
+                      - child.children.each do |grandchild|
+                        -if @item.category_id == grandchild.id
+                          = parent.name
+                          　>>　
+                          = child.name
+                          　>>　
+                          = grandchild.name
 
               .table-contents
                 .table-left
@@ -66,11 +67,16 @@
                 .table-left
                   商品のサイズ
                 .table-right
-                  = link_to "#",class:"skyblue"do
-                    =@item.size.root.name
-                    = icon'fas', 'angle-left'
-                  = link_to "#",class:"skyblue"do
-                    =@item.size.name
+                  - @size_parent.each do |parent|
+                    -if @item.size_id == parent.id
+                      = parent.name
+                      
+                    - parent.children.each do |child|
+                      -if @item.size_id == child.id
+                        = parent.name
+                        　>>　
+                        = child.name
+
               .table-contents
                 .table-left
                   商品の状態
@@ -85,64 +91,68 @@
                 .table-left
                   発送元の地域
                 .table-right
-                  = link_to "#",class:"skyblue"do
-                    = @item.prefecture.name
+                  = @item.prefecture.name
               .table-contents
                 .table-left
                   発送日の目安
                 .table-right
                   = @item.days.name
 
-
           .Main__show__contentRight__topContent__itemBox__optionalArea
-            %ul.optinalArea2
-              %li.optinalArea3
-               
+            .optinalArea_likes
+              = link_to '#', class:"likes_link" do
+                = icon 'fas', 'star', class:"like-btn"
+                お気に入り
+                = @item.likes.count
+            .optinalArea_report
+              = link_to '#', class:"report_link" do
+                = icon 'fas', 'flag', class:"report-btn"
+                不適切な商品の通報
 
-                = link_to likes_path(item_id: @item.id),class:"optinalArea4", method: :post do
-                  = icon'fas', 'star',class:"like-btn"
-                  お気に入り
-                  = @item.likes.count
-        
-        %ul.Main__show__contentRight__links
-          %li.Main__show__contentRight__links__links2
-            - if @prev_item.present? 
-              = link_to purchases_items_path(@prev_product),class:"before__item" do  
-                = icon'fas', 'angle-left'   
-                = @prev_item.name
+      .Main__show__contentRight__commentBox
+        = form_with url: root_path, class: 'comment-form' do |f|
+          = f.text_area :comment, { class: 'comment-area'}
+          %div.Main__show__contentRight__commentBox__note
+            相手のことを考え丁寧なコメントを心がけましょう。
+            %br
+            不快な言葉遣いなどは利用制限や退会処分となることがあります。
+          = f.submit 'コメントする', class: "comment-btn"
+          = icon 'fas', 'comment', class: 'comment-icon'
+          
+          
+      .Main__show__contentRight__links
+        .Main__show__contentRight__links__prev
+          - if @prev_item.present?
+            = link_to '#', class:"before__item" do
+              = icon'fas', 'angle-left'   
+              前の商品
+        .Main__show__contentRight__links__next
+          - if @next_item.present?
+            = link_to '#', class:"after__item" do
+              後ろの商品
+              = icon'fas', 'angle-right'
+
     
-          %li.links3
-            - if @next_item.present?  
-              = link_to purchases_items_path(@next_product),class:"after__item" do 
-                = @next_item.name
-                = icon'fas', 'angle-right'
-
-      
-        %li.Main__show__contentRight__relatedItems__relatedItems2
-          = link_to "items_path",class:"Main__show__contentRight__relatedItems__relatedItems2__relatedItems3" do
+      .Main__show__contentRight__relatedItems
+        .Main__show__contentRight__relatedItems__more
+          = link_to '#', class: 'etc-items' do
             →その他の商品をもっと見る
             
-      .Main__show__contentRight__relatedItems
-        .Main__show__contentRight__relatedItems__puroductLists
-
-
-          -@items.first(2).each do |item|
-            .Main__show__contentRight__relatedItems__puroductLists__puroductList
+        .Main__show__contentRight__relatedItems__lists
+          - @items.first(3).each do |item|
+            .Main__show__contentRight__relatedItems__lists__product
               = link_to item_path(id: @item.id),class:"product--img" do
                 = image_tag item.images.first.photo.url, size: '200x170'
-                .productList--img
-                .productList--body
-                  = item.name
-                  .detail
-                    %ul.detail2
-                      %li.detail3
-                        = item.price
-                        円
-                      %li.detail4
-                        = icon'fas', 'star',class:"like-btn" 
-                        = @item.likes.count
-                    %p.detail5
-                      (税込)
+                .Main__show__contentRight__relatedItems__lists__product__body
+                  .product-name
+                    = item.name
+                  .product-detail
+                    .product-detail__price
+                      = item.price
+                      円（税込）
+                    .product-detail__likes
+                      = icon'fas', 'star',class:"like-btn" 
+                      = @item.likes.count
           
 = render "items/footer"
 

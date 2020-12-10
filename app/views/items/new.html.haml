@@ -24,7 +24,7 @@
             -if @item.persisted?
               = image.check_box :_destroy, data:{index: image.index}, class: 'hidden-destroy'
           -if @item.persisted?
-            %div.js-file_group{ data: { index: '@item.image.count'}}
+            %div.js-file_group{ data: { index: @item.image.count}}
               = file_field_tag :photo, name: "item[images_attributes][#{@item.images.count}][photo]", class: 'js-file'
               %div.js-remove 削除
         

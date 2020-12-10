@@ -29,7 +29,7 @@ Rails.application.routes.draw do
       get 'size_children', defaults: { format: 'json' }
     end
     collection do
-      resources :likes, only: [:index, :create]
+      # resources :likes, only: [:index, :create]
     end
   end
 
